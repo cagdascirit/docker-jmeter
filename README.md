@@ -3,7 +3,7 @@ Jmeter Docker Images (Jmeter-base. Jmeter-Master and Jmeter-Slave)
 
 ##### Sample Usage for Slave (Jmeter Server):
 ```sh
-$ docker run -d -P --name slave1 -v /Users/cagdas/docker_mnt/:/jmeter_log cirit/jmeter:slave -j /jmeter_log/j3.log
+$ docker run -d -P --name slave1 -v /Users/cagdas/docker_mnt/:/jmeter_log cirit/jmeter:slave -j /jmeter_log/slave1.log
 ```
 ##### Sample Usage for Master (Jmeter Client):
 ```sh
