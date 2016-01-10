@@ -1,7 +1,7 @@
 # docker-jmeter
 Jmeter Docker Images (Jmeter-Base, Jmeter-Master and Jmeter-Slave) for Java performance/load tests. Images are ready to be run as Docker container and ready to run on [tutum](https://www.tutum.co). 
 
-[Jmeter](http://jmeter.apache.org) and [Gatling](http:///gatling.io) sources were hacked so now Jmeter has capability to drive Gatling to run performance/load tests. That means you can run your Gatling Scala scripts to generate **distributed** performance/load tests driven by Jmeter. There is no change in Jmeter-master for this scenario but Jmeter-slaves trigger Gatling to run tests and collect results from Gatling and send them back to the master.
+By hacking [Jmeter](http://jmeter.apache.org) and [Gatling](http:///gatling.io) sources, Jmeter has capability to drive Gatling to run performance/load tests now. That means you can run your Gatling Scala scripts to generate **distributed**/**cluster-based** performance/load tests driven by Jmeter. There is no change in Jmeter-master for this scenario but Jmeter-slaves trigger Gatling to run tests and collect results from Gatling and send them back to the master.
 
 Use these (jmeter) parameters on master node for slaves drive Gatling:
 
@@ -18,7 +18,7 @@ $ docker run -d -P --name slave1 -v /Users/cagdas/docker_mnt/:/jmeter_log cirit/
 $ docker run -d -P --name master -v /Users/cagdas/docker_mnt/:/jmeter_log --link slave1 --link slave2 --link slave3 cirit/jmeter:master -t /jmeter_log/test.jmx -R slave1,slave2,slave3 -j /jmeter_log/master.log -l /jmeter_log/result.jtl -X
 ```
 
-##### Sample Usage for Slave driving Gatling (cirit/jmeter:slave):
+##### Sample Usage for Slave driving Gatling (cirit/jmeter:slave_running_gatling):
 ```sh
 $ docker run -d -P --name gslave1 -v /Users/cagdas/docker_mnt/:/jmeter_log cirit/jmeter:slave_running_gatling -j /jmeter_log/gslave1.log
 ```
